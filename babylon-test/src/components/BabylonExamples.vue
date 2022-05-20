@@ -1,5 +1,5 @@
 <template>
-  <div class="div">
+  <div class="main">
     <h3>
     Babylon Examples
   </h3>
@@ -9,29 +9,49 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { BasicScene } from '@/classes/BasicScene';
 
 export default defineComponent({
   name: 'BabylonExamples',
   mounted(){
-    const canvas = document.querySelector("canvas")
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const canvas = document.querySelector("canvas")!;
+    new BasicScene(canvas)
   }
 });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+canvas {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* mobile webkit */
+}
+
+.main {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding-top: 5vh;
+}
+
 h3 {
-  margin: 40px 0 0;
+  color: white;
+  font-weight: 600;
+  margin: 0;
+  padding-bottom: 5vh;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+
+canvas {
+  height: 70%;
+  width: 70%;
+  filter: drop-shadow(7px 4px 2px black)
 }
 </style>
